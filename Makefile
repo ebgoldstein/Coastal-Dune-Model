@@ -17,6 +17,7 @@ INCPATH = -I. -I${FFTW_INC}
 MY_DEFS =-DPT_VERBOSITY=20 -DPT_SAFETY=1 -DPDE_3D 
 
 LINK    = g++
+##LFLAGS	=  -stdlib=libstdc++ -lm -lfftw3 -L${FFTW_LIB} ${TESTOPT}
 LFLAGS	= -lm -lfftw3 -L${FFTW_LIB} ${TESTOPT}
 LIBS    = $(LIBS_QT) $(LIBS_X11) $(LIBS_OS) 
 
@@ -29,7 +30,9 @@ OBJECTS = evolution.o dune_evolution.o flux_stationary.o globals.o main.o \
 	initsurfwaves.o initsurfgauss.o initsurfcone.o initsurfmatlab.o initsurfbeach.o initsurfparabol.o \
 	initsurfalea.o analyze_new.o shear.o rfftw12d.o sepbubble.o avalanche.o \
 	shear_hlr.o save.o func.o PTG_Func2dScalar.o PTG_Func2dVec.o \
-	 wind.o influx.o shore.o vegetation.o
+	 wind.o influx.o shore.o vegetation.o 
+
+	## storm.o
 
 HEADERS_MAIN = $(OBJECTS:.o=.h)
 HEADERS = $(HEADERS_MAIN:main.h=)
@@ -38,8 +41,7 @@ HEADERS = $(HEADERS_MAIN:main.h=)
 
 Dune:	$(OBJECTS) $(PT_OBJECTS)
 	$(LINK) -o $@ $^ $(LFLAGS)
-
-###	cp Dune /Users/orencioduranvinent/bin/Dune_pnas
+	
 
 %.o:	%.cc
 	$(C++) -c $(CFLAGS) $(INCPATH) -o $@ $<
