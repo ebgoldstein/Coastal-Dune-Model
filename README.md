@@ -1,4 +1,4 @@
-#Coastal Dune Model with Lateral vegetation growth
+#Coastal Dune Model with Lateral Vegetation Growth
 
 This is a new version of the 'Coastal Dune Model' (CDM) with a vegetation subroutine that computes lateral expansion of vegetation. This version of the model was used in Goldstein et al. (2017). http://dx.doi.org/10.5194/esurf-2017-2
 
